@@ -1,0 +1,24 @@
+.btn-dropdown:active {
+  border-style: outset;
+  background-color:#fff;
+}
+
+input#SearchFurnitureInput{
+	width:100%;
+	border:none;
+	border-bottom:2px solid #bdbdbd;
+	border-radius:0;
+	background-color:#106cc8;
+	padding-left:0px;
+	color:#fff;
+}
+
+input#SearchFurnitureInput::placeholder{
+	font-weight: bold;
+	color:#fff;
+}
+
+
+#InputComponents{
+	background-color:#106cc8;
+}
