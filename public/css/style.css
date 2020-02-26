@@ -18,7 +18,38 @@ input#SearchFurnitureInput::placeholder{
 	color:#fff;
 }
 
+#FurnitureStyleInputDropDown > button, #DeliveryTimeInputDropDown > button {
+	background-color:#fff;
+	border-radius:0;
+	color:#000;
+	width:100%;
+	text-align:left;
+	border-bottom:2px solid #bdbdbd;
+}
+
+.dropdown-inputs div.form-group.dropdown{
+	padding-bottom: 8px;
+	border-bottom:2px solid #bdbdbd;
+}
+
+.dropdown-inputs .dropdown-menu {
+	width:100%;
+}
+
+.dropdown-toggle::after {
+	float: right;
+    margin-top: .5em;
+}
 
 #InputComponents{
 	background-color:#106cc8;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+	background-color:#00968c;
+	border-radius:2px;
+}
+
+.custom-checkbox .custom-control-label::before {
+	border-radius:2px;
 }

@@ -17,7 +17,7 @@ class FilterComponent extends React.Component {
 				  	</div>
 				  </div>
 				  <div className="row">
-				  	<div className="col-6">
+				  	<div className="col-6 dropdown-inputs">
 				  		<div className="form-group dropdown" id="FurnitureStyleInputDropDown">
 				  			<button className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="false">
 							    Furniture Style
@@ -26,13 +26,16 @@ class FilterComponent extends React.Component {
 						      {furniturestyles.map(item => (
 						      	<a key={item} className="btn-dropdown dropdown-item">
 						      		{item}
-						      		<div className="float-right"><input type="checkbox" className="form-check-input"/></div>
+						      		<div className="float-right custom-control custom-checkbox">
+						      			<input type="checkbox" className="custom-control-input form-check-input" id={"customCheck" + item}/>
+						      			<label class="custom-control-label" for={"customCheck" + item}></label>
+						      		</div>
 						      	</a>
 						      	))}	
 						    </div>
 					  	</div>
 				  	</div>
-				  	<div className="col-6">
+				  	<div className="col-6 dropdown-inputs">
 				  		<div className="form-group dropdown" id="DeliveryTimeInputDropDown">
 				  			<button className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="false">
 							    Delivery Time
@@ -40,19 +43,31 @@ class FilterComponent extends React.Component {
 						    <div className="dropdown-menu" id="DeliveryTimeInput">
 						      <a className="btn-dropdown dropdown-item">
 						      	1 week
-						      	<div className="float-right"><input type="checkbox" className="form-check-input"/></div>
+						      	<div className="float-right custom-control custom-checkbox">
+						      		<input id="customCheckDT1" type="checkbox" className="custom-control-input form-check-input"/>
+						      		<label class="custom-control-label" for="customCheckDT1"></label>
+						      	</div>
 						      </a>
 						      <a className="btn-dropdown dropdown-item">
 						      	2 week
-						      	<div className="float-right"><input type="checkbox" className="form-check-input"/></div>
+						      	<div className="float-right custom-control custom-checkbox">
+						      		<input id="customCheckDT2" type="checkbox" className="custom-control-input form-check-input"/>
+						      		<label class="custom-control-label" for="customCheckDT2"></label>
+						      	</div>
 						      </a>
 						      <a className="btn-dropdown dropdown-item">
 						      	1 month
-						     	<div className="float-right"><input type="checkbox" className="form-check-input"/></div>
+						     	<div className="float-right custom-control custom-checkbox">
+						     		<input id="customCheckDT3" type="checkbox" className="custom-control-input form-check-input"/>
+						     		<label class="custom-control-label" for="customCheckDT3"></label>
+						     	</div>
 						      </a>
 						      <a className="btn-dropdown dropdown-item">
 						      	more
-						      	<div className="float-right"><input type="checkbox" className="form-check-input"/></div>
+						      	<div className="float-right custom-control custom-checkbox">
+						      		<input id="customCheckDT4" type="checkbox" className="custom-control-input form-check-input"/>
+						      		<label class="custom-control-label" for="customCheckDT4"></label>
+						      	</div>
 						      </a>
 						    </div>
 					  	</div>

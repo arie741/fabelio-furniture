@@ -12,11 +12,15 @@ class ProductList extends React.Component {
 					  <div className="col-lg-6" key={item.name}>
 					  	<div className="card">
 					  		<div className="card-body">
-					  			<h5 className="card-title">{item.name}</h5>
-					  			<p className="card-text">{item.description}</p>
-					  			<p className="card-text">{item.price}</p>
-					  			<a href="" className="card-link">{item.furniture_style}</a>
-					  			<a href="" className="card-link">{item.delivery_time} Days</a>
+					  			<div className="row name-price">
+					  				<h5 className="card-title float-left">{item.name}</h5>
+					  				<p className="card-text float-right">{item.price}</p>
+					  			</div>					  			
+					  			<div className="row desc">
+					  				<p className="card-text">{item.description}</p>
+						  			<a href="" className="card-link">{item.furniture_style}</a>
+						  			<a href="" className="card-link dt-days">{item.delivery_time} Days</a>
+					  			</div>
 					  		</div>
 					  	</div>
 					  	<br/>
