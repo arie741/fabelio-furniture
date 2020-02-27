@@ -28,7 +28,7 @@ class FilterComponent extends React.Component {
 						      		{item}
 						      		<div className="float-right custom-control custom-checkbox">
 						      			<input type="checkbox" className="custom-control-input form-check-input" id={"customCheck" + item}/>
-						      			<label class="custom-control-label" for={"customCheck" + item}></label>
+						      			<label className="custom-control-label" htmlFor={"customCheck" + item}></label>
 						      		</div>
 						      	</a>
 						      	))}	
@@ -45,28 +45,28 @@ class FilterComponent extends React.Component {
 						      	1 week
 						      	<div className="float-right custom-control custom-checkbox">
 						      		<input id="customCheckDT1" type="checkbox" className="custom-control-input form-check-input"/>
-						      		<label class="custom-control-label" for="customCheckDT1"></label>
+						      		<label className="custom-control-label" htmlFor="customCheckDT1"></label>
 						      	</div>
 						      </a>
 						      <a className="btn-dropdown dropdown-item">
 						      	2 week
 						      	<div className="float-right custom-control custom-checkbox">
 						      		<input id="customCheckDT2" type="checkbox" className="custom-control-input form-check-input"/>
-						      		<label class="custom-control-label" for="customCheckDT2"></label>
+						      		<label className="custom-control-label" htmlFor="customCheckDT2"></label>
 						      	</div>
 						      </a>
 						      <a className="btn-dropdown dropdown-item">
 						      	1 month
 						     	<div className="float-right custom-control custom-checkbox">
 						     		<input id="customCheckDT3" type="checkbox" className="custom-control-input form-check-input"/>
-						     		<label class="custom-control-label" for="customCheckDT3"></label>
+						     		<label className="custom-control-label" htmlFor="customCheckDT3"></label>
 						     	</div>
 						      </a>
 						      <a className="btn-dropdown dropdown-item">
 						      	more
 						      	<div className="float-right custom-control custom-checkbox">
 						      		<input id="customCheckDT4" type="checkbox" className="custom-control-input form-check-input"/>
-						      		<label class="custom-control-label" for="customCheckDT4"></label>
+						      		<label className="custom-control-label" htmlFor="customCheckDT4"></label>
 						      	</div>
 						      </a>
 						    </div>

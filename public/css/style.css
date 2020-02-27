@@ -16,6 +16,7 @@ input#SearchFurnitureInput{
 input#SearchFurnitureInput::placeholder{
 	font-weight: bold;
 	color:#fff;
+	font-size:20px;
 }
 
 #FurnitureStyleInputDropDown > button, #DeliveryTimeInputDropDown > button {
@@ -27,18 +28,29 @@ input#SearchFurnitureInput::placeholder{
 	border-bottom:2px solid #bdbdbd;
 }
 
-.dropdown-inputs div.form-group.dropdown{
+#InputComponents .dropdown-inputs div.form-group.dropdown{
 	padding-bottom: 8px;
 	border-bottom:2px solid #bdbdbd;
 }
 
-.dropdown-inputs .dropdown-menu {
+#InputComponents .dropdown-inputs .dropdown-menu {
 	width:100%;
 }
 
-.dropdown-toggle::after {
+#InputComponents .dropdown-toggle::after {
 	float: right;
     margin-top: .5em;
+}
+
+#InputComponents .dropdown-item {
+	margin-bottom:20px;
+}
+
+#InputComponents .dropdown-menu {
+	border-radius:0;
+	-webkit-box-shadow: 0px 2px 6px -1px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 2px 6px -1px rgba(0,0,0,0.75);
+	box-shadow: 0px 2px 6px -1px rgba(0,0,0,0.75);
 }
 
 #InputComponents{
@@ -52,4 +64,26 @@ input#SearchFurnitureInput::placeholder{
 
 .custom-checkbox .custom-control-label::before {
 	border-radius:2px;
+}
+
+.price-text{
+	font-weight:bold;
+	color:#ff9900;
+	padding-top: 7px;
+}
+
+.furniture-style-text p span {
+	color:#106cc8;
+}
+
+.dt-days {
+	font-weight: bold;
+	color:#106cc8;
+	text-decoration: underline;
+}
+
+.product-item{
+	-webkit-box-shadow: 0px 2px 6px -1px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 2px 6px -1px rgba(0,0,0,0.75);
+	box-shadow: 0px 2px 6px -1px rgba(0,0,0,0.75);
 }
