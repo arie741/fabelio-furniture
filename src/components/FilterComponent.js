@@ -3,7 +3,13 @@ import React from 'react';
 class FilterComponent extends React.Component {
 	constructor(props) {
 	    super(props);
+	    this.searchInputHandle = this.searchInputHandle.bind(this);
   	}
+
+  	searchInputHandle(event){
+  		this.props.onInputChange(event.target.value);
+  	}
+
 	render(){
 		const contentData = this.props.contents;
 		const furniturestyles = this.props.styleslist;
@@ -12,7 +18,7 @@ class FilterComponent extends React.Component {
 				  <div className="row">
 				  	<div className="col-6">
 				  		<div className="form-group">
-					    	<input type="text" className="form-control" id="SearchFurnitureInput" placeholder="Search Furniture"/>
+					    	<input type="text" className="form-control" onChange={this.searchInputHandle} id="SearchFurnitureInput" placeholder="Search Furniture"/>
 					  	</div>	
 				  	</div>
 				  </div>

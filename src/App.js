@@ -15,9 +15,11 @@ class App extends React.Component {
           furnitureStylesList: []
       }
     };
+
+    this.onSearchInputChangeHandle = this.onSearchInputChangeHandle.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     //Calling the fabelio API 
     fetch(fabAPi)
       .then(res => res.json())
@@ -38,18 +40,30 @@ class App extends React.Component {
       )
   }
 
+  onSearchInputChangeHandle(event){
+    const currentData = this.state.data.items;
+    const filteredData = currentData.filter(function(item){
+        return item.name === "Sofa L Jobi";
+    })
+    this.setState({data: {items: filteredData,
+                          furnitureStylesList: this.state.data.furnitureStylesList}});
+  }
+
   render(){
     const { error, isLoaded, items } = this.state;
     if (error) {//Will send error message if it failed to connect to API.
       return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {//Will render a component if it hasn't connected to the api yet.
+    } else if (!isLoaded) {//Will render a 'loading' component if it hasn't connected to the api yet.
       return <div>Loading...</div>;
     } else {//if API connection is succesful
       return (
         <div className="container">
           <div className="card">
             <div className="card-header" id="InputComponents">
-              <FilterComponent styleslist={this.state.data.furnitureStylesList} />
+              <FilterComponent 
+                styleslist={this.state.data.furnitureStylesList}
+                onInputChange={this.onSearchInputChangeHandle}
+                />
             </div>
             <div className="card-body">
               <ProductList contents={this.state.data.items} />

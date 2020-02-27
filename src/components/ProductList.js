@@ -1,10 +1,12 @@
 import React from 'react';
 
+//this function format the price into an IDR currency format 
 function ItemPrice(props){
 	const priceNum = new Intl.NumberFormat(['ban', 'id']).format(props.price);
 	return <p className="card-text price-text float-right">RP. {priceNum}</p>			
 }
 
+//this function is for limiting product description to max 114 characters
 function trimDescText(str){
 	if (str.length >= 114){
 		return str.substring(0, 114) + "...";
@@ -13,6 +15,7 @@ function trimDescText(str){
 	}
 }
 
+//main product list component
 class ProductList extends React.Component {
 	constructor(props) {
 	    super(props);
