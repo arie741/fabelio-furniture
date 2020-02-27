@@ -2,14 +2,22 @@ import React from 'react';
 
 function ItemPrice(props){
 	const priceNum = new Intl.NumberFormat(['ban', 'id']).format(props.price);
-	return <p className="card-text price-text float-right">RP. {priceNum}</p>
-			
+	return <p className="card-text price-text float-right">RP. {priceNum}</p>			
+}
+
+function trimDescText(str){
+	if (str.length >= 114){
+		return str.substring(0, 114) + "...";
+	} else {
+		return str;
+	}
 }
 
 class ProductList extends React.Component {
 	constructor(props) {
 	    super(props);
   	}
+
 	render(){
 		const contentData = this.props.contents;
 		return (
@@ -26,7 +34,7 @@ class ProductList extends React.Component {
 					  			</div>					  			
 					  			<div className="row">
 					  				<div className="col-12 desc-text">
-					  					<p className="card-text">{item.description}</p>
+					  					<p className="card-text">{trimDescText(item.description)}</p>
 					  				</div>
 					  			</div>
 					  			<br/>
