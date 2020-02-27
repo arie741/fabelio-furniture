@@ -8,6 +8,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      filter: {
+          searchInput: ""
+      },
       data: {
           error: null,
           isLoaded: false,//this state will change to true if the api is loaded
@@ -19,7 +22,7 @@ class App extends React.Component {
     this.onSearchInputChangeHandle = this.onSearchInputChangeHandle.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     //Calling the fabelio API 
     fetch(fabAPi)
       .then(res => res.json())
@@ -41,12 +44,7 @@ class App extends React.Component {
   }
 
   onSearchInputChangeHandle(event){
-    const currentData = this.state.data.items;
-    const filteredData = currentData.filter(function(item){
-        return item.name === "Sofa L Jobi";
-    })
-    this.setState({data: {items: filteredData,
-                          furnitureStylesList: this.state.data.furnitureStylesList}});
+    this.setState({filter: {searchInput: event}});
   }
 
   render(){
@@ -66,7 +64,7 @@ class App extends React.Component {
                 />
             </div>
             <div className="card-body">
-              <ProductList contents={this.state.data.items} />
+              <ProductList contents={this.state.data.items} productFilter={this.state.filter}/>
             </div>
           </div>
         </div>

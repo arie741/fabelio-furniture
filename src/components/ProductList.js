@@ -23,9 +23,23 @@ class ProductList extends React.Component {
 
 	render(){
 		const contentData = this.props.contents;
+		const searchFilter = this.props.productFilter.searchInput;
+
+		var filteredData = contentData;
+
+		//filter by search text
+		if(searchFilter.length > 0){
+			var filteredData = filteredData.filter(function(item){
+				const itemStr = item.name.toUpperCase();
+				if (itemStr.search(searchFilter.toUpperCase()) >= 0){
+				    return true;
+				    }
+			})
+		}
+
 		return (
 				<div className="row">
-					{contentData.map(item => (
+					{filteredData.map(item => (
 					  <div className="col-lg-6" key={item.name}>
 					  	<div className="card product-item">
 					  		<div className="card-body">
