@@ -2,7 +2,7 @@ import React from 'react';
 import ProductList from './components/ProductList.js';
 import FilterComponent from './components/FilterComponent.js';
 
-const fabAPi = "http://www.mocky.io/v2/5c9105cb330000112b649af8";
+const fabAPi = "https://www.mocky.io/v2/5c9105cb330000112b649af8";
 
 function LoadingPage (props){
   return (
