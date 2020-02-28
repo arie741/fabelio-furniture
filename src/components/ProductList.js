@@ -22,19 +22,35 @@ class ProductList extends React.Component {
   	}
 
 	render(){
-		const contentData = this.props.contents;
 		const searchFilter = this.props.productFilter.searchInput;
+		const styleFilter = this.props.productFilter.furnitureStyles;
 
-		var filteredData = contentData;
+
+		var filteredData = this.props.contents;
 
 		//filter by search text
 		if(searchFilter.length > 0){
-			var filteredData = filteredData.filter(function(item){
+			filteredData = filteredData.filter(function(item){//data filter function
 				const itemStr = item.name.toUpperCase();
-				if (itemStr.search(searchFilter.toUpperCase()) >= 0){
+				if (itemStr.search(searchFilter.toUpperCase()) >= 0){//filter condition
 				    return true;
 				    }
 			})
+		}
+
+		//filter by furniture styles
+		if(styleFilter.length > 0){
+			var i;
+			for(i=0;i < styleFilter.length;i++){
+				var currentFilter = styleFilter[i];
+				filteredData = filteredData.filter(function(item){
+					const stylesArray = item.furniture_style; 
+					if (stylesArray.indexOf(currentFilter) !== -1) {
+						return true;
+					}
+				})
+
+			}
 		}
 
 		return (

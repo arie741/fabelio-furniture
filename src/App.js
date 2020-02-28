@@ -9,7 +9,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       filter: {
-          searchInput: ""
+          searchInput: "",
+          furnitureStyles: []
       },
       data: {
           error: null,
@@ -44,7 +45,28 @@ class App extends React.Component {
   }
 
   onSearchInputChangeHandle(event){
-    this.setState({filter: {searchInput: event}});
+    this.setState({filter: {
+                            searchInput: event,
+                            furnitureStyles: this.state.filter.furnitureStyles
+                            }});
+  }
+
+  onFurnitureStylesChangeHandle(item, event){
+    if(event === "check"){//if a style filter is check, it will add a style filter
+      const furnitureStylesFilter = this.state.filter.furnitureStyles;
+      furnitureStylesFilter.push(item);
+      this.setState({filter: {
+                              searchInput: this.state.filter.searchInput,
+                              furnitureStyles: furnitureStylesFilter
+                              }});
+    } else {//if a style filter is unchecked, it will REMOVE a style filter
+      const furnitureStylesFilter = this.state.filter.furnitureStyles;
+      furnitureStylesFilter.splice( furnitureStylesFilter.indexOf(item), 1 );
+      this.setState({filter: {
+                              searchInput: this.state.filter.searchInput,
+                              furnitureStyles: furnitureStylesFilter
+                              }});
+    }
   }
 
   render(){
@@ -61,6 +83,7 @@ class App extends React.Component {
               <FilterComponent 
                 styleslist={this.state.data.furnitureStylesList}
                 onInputChange={this.onSearchInputChangeHandle}
+                onFurnitureStylesChange={(item, event) => this.onFurnitureStylesChangeHandle(item, event)}
                 />
             </div>
             <div className="card-body">
