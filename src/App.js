@@ -10,7 +10,8 @@ class App extends React.Component {
     this.state = {
       filter: {
           searchInput: "",
-          furnitureStyles: []
+          furnitureStyles: [],
+          deliveryTime: []
       },
       data: {
           error: null,
@@ -21,6 +22,8 @@ class App extends React.Component {
     };
 
     this.onSearchInputChangeHandle = this.onSearchInputChangeHandle.bind(this);
+    this.onFurnitureStylesChangeHandle = this.onFurnitureStylesChangeHandle.bind(this);
+    this.onDeliveryTimeChangeHandle = this.onDeliveryTimeChangeHandle.bind(this);
   }
 
   componentDidMount() {
@@ -47,7 +50,8 @@ class App extends React.Component {
   onSearchInputChangeHandle(event){
     this.setState({filter: {
                             searchInput: event,
-                            furnitureStyles: this.state.filter.furnitureStyles
+                            furnitureStyles: this.state.filter.furnitureStyles,
+                            deliveryTime: this.state.filter.deliveryTime
                             }});
   }
 
@@ -57,20 +61,49 @@ class App extends React.Component {
       furnitureStylesFilter.push(item);
       this.setState({filter: {
                               searchInput: this.state.filter.searchInput,
-                              furnitureStyles: furnitureStylesFilter
+                              furnitureStyles: furnitureStylesFilter,
+                              deliveryTime: this.state.filter.deliveryTime
                               }});
     } else {//if a style filter is unchecked, it will REMOVE a style filter
       const furnitureStylesFilter = this.state.filter.furnitureStyles;
       furnitureStylesFilter.splice( furnitureStylesFilter.indexOf(item), 1 );
       this.setState({filter: {
                               searchInput: this.state.filter.searchInput,
-                              furnitureStyles: furnitureStylesFilter
+                              furnitureStyles: furnitureStylesFilter,
+                              deliveryTime: this.state.filter.deliveryTime
                               }});
     }
   }
 
+  onDeliveryTimeChangeHandle(item, event){
+    var deliveryTimeFilter = [];
+    switch(event) {
+      case "check":///if a delivery time filter is check, it will add a delivery time filter
+        deliveryTimeFilter = this.state.filter.deliveryTime;
+        deliveryTimeFilter.push(item);
+        this.setState({filter: {
+                                searchInput: this.state.filter.searchInput,
+                                furnitureStyles: this.state.filter.furnitureStyles,
+                                deliveryTime: deliveryTimeFilter
+                                }});
+        break;
+
+      case "uncheck":///if a delivery time filter is check, it will REMOVE a delivery time filter
+        deliveryTimeFilter = this.state.filter.deliveryTime;
+        deliveryTimeFilter.splice( deliveryTimeFilter.indexOf(item), 1 );
+        this.setState({filter: {
+                                searchInput: this.state.filter.searchInput,
+                                furnitureStyles: this.state.filter.furnitureStyles,
+                                deliveryTime: deliveryTimeFilter
+                                }});
+        break;
+      default:
+        // code block
+    }  
+  }
+
   render(){
-    const { error, isLoaded, items } = this.state;
+    const { error, isLoaded } = this.state;
     if (error) {//Will send error message if it failed to connect to API.
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {//Will render a 'loading' component if it hasn't connected to the api yet.
@@ -84,6 +117,7 @@ class App extends React.Component {
                 styleslist={this.state.data.furnitureStylesList}
                 onInputChange={this.onSearchInputChangeHandle}
                 onFurnitureStylesChange={(item, event) => this.onFurnitureStylesChangeHandle(item, event)}
+                onDeliveryTimeHandle={(item, event) => this.onDeliveryTimeChangeHandle(item, event)}
                 />
             </div>
             <div className="card-body">

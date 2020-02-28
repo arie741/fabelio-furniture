@@ -87,3 +87,7 @@ input#SearchFurnitureInput::placeholder{
 	-moz-box-shadow: 0px 2px 6px -1px rgba(0,0,0,0.75);
 	box-shadow: 0px 2px 6px -1px rgba(0,0,0,0.75);
 }
+
+.dt-more-input{
+	width:60px;
+}

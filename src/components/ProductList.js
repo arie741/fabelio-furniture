@@ -1,5 +1,19 @@
 import React from 'react';
 
+//Operator function
+function filterCheck(filterArray, itemArray){
+	var i;
+	var checker = false;
+	for(i=0; i < filterArray.length; i++){
+		if((filterArray[i] === "DTmore") && parseInt(itemArray) > 30){
+			checker = true;
+		} else if(itemArray.indexOf(filterArray[i]) !== -1) {
+			checker = true;
+		}
+	}
+	return checker;
+}
+
 //this function format the price into an IDR currency format 
 function ItemPrice(props){
 	const priceNum = new Intl.NumberFormat(['ban', 'id']).format(props.price);
@@ -24,7 +38,7 @@ class ProductList extends React.Component {
 	render(){
 		const searchFilter = this.props.productFilter.searchInput;
 		const styleFilter = this.props.productFilter.furnitureStyles;
-
+		const deliveryTimeFilter = this.props.productFilter.deliveryTime;
 
 		var filteredData = this.props.contents;
 
@@ -40,17 +54,22 @@ class ProductList extends React.Component {
 
 		//filter by furniture styles
 		if(styleFilter.length > 0){
-			var i;
-			for(i=0;i < styleFilter.length;i++){
-				var currentFilter = styleFilter[i];
-				filteredData = filteredData.filter(function(item){
-					const stylesArray = item.furniture_style; 
-					if (stylesArray.indexOf(currentFilter) !== -1) {
-						return true;
-					}
-				})
+			filteredData = filteredData.filter(function(item){
+				const stylesArray = item.furniture_style; 
+				if (filterCheck(styleFilter, stylesArray)) {
+					return true;
+				}
+			})
+		}
 
-			}
+		//filter by delivery time
+		if(deliveryTimeFilter.length > 0){
+			filteredData = filteredData.filter(function(item){
+				const deliveryTimeArray = item.delivery_time; 
+				if (filterCheck(deliveryTimeFilter, deliveryTimeArray)){
+					return true;
+				}
+			})
 		}
 
 		return (
