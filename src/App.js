@@ -4,6 +4,23 @@ import FilterComponent from './components/FilterComponent.js';
 
 const fabAPi = "http://www.mocky.io/v2/5c9105cb330000112b649af8";
 
+function LoadingPage (props){
+  return (
+        <div className="loading-page">
+          <div className="row">
+            <div className="col-12">
+              <img src="./img/fabelio-logo-2.svg" alt=""/>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-12">
+               <p>{props.message}</p>
+            </div>
+          </div>
+        </div>
+      );
+}
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -105,9 +122,9 @@ class App extends React.Component {
   render(){
     const { error, isLoaded } = this.state;
     if (error) {//Will send error message if it failed to connect to API.
-      return <div>Error: {error.message}</div>;
+      return <LoadingPage message={"Error: " + error.message}/>;
     } else if (!isLoaded) {//Will render a 'loading' component if it hasn't connected to the api yet.
-      return <div>Loading...</div>;
+      return <LoadingPage message="Loading..."/>;
     } else {//if API connection is succesful
       return (
         <div className="container">

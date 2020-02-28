@@ -91,3 +91,12 @@ input#SearchFurnitureInput::placeholder{
 .dt-more-input{
 	width:60px;
 }
+
+.loading-page div.col-12 > *{
+	display:block;
+	margin: auto;
+}
+
+.loading-page div.col-12 > p{
+	text-align: center;
+}
